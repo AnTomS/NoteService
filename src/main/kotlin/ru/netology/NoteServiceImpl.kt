@@ -38,7 +38,7 @@ object NoteServiceImpl: CommentAndNoteService<Note> {
 
     override fun restore(id: Int) {
         notes.forEach{ note ->
-            if (noteId==note.id && note.deleted==true) note.deleted= false
+            if (noteId==note.id && note.deleted) note.deleted= false
         }
         throw NoteNotFoundException("Заметка не найдена")
     }

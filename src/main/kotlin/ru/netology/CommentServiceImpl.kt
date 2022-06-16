@@ -38,7 +38,7 @@ object CommentServiceImpl : CommentAndNoteService<Comment> {
 
     override fun restore(id: Int) {
         comments.forEach { comment ->
-            if (comment.id == id && comment.deleted == true) comment.deleted = false
+            if (comment.id == id && comment.deleted) comment.deleted = false
         }
         throw CommentNotFoundException("Комментарий не найден")
     }

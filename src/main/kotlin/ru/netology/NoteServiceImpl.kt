@@ -1,9 +1,9 @@
 package ru.netology
 
-object NoteServiceImpl: CommentAndNoteService<Note> {
+object NoteServiceImpl : CommentAndNoteService<Note> {
 
     private val notes = mutableListOf(Note())
-    private var noteId : Int = 1
+    private var noteId: Int = 1
 
     override fun add(note: Note): Note {
         notes.add(note.copy(id = noteId))
@@ -16,7 +16,7 @@ object NoteServiceImpl: CommentAndNoteService<Note> {
     }
 
 
-    override fun edit(noteId: Int, newNote : Note): Boolean {
+    override fun edit(noteId: Int, newNote: Note): Boolean {
         for ((index, note) in notes.withIndex()) {
             if (noteId == note.id) {
                 notes[index] = note.copy(
@@ -30,15 +30,15 @@ object NoteServiceImpl: CommentAndNoteService<Note> {
     }
 
     override fun getById(id: Int): Note {
-        notes.forEach {note ->
-            if (noteId==note.id) return note
+        notes.forEach { note ->
+            if (noteId == note.id) return note
         }
         throw NoteNotFoundException("Заметка не найдена")
     }
 
     override fun restore(id: Int) {
-        notes.forEach{ note ->
-            if (noteId==note.id && note.deleted) note.deleted= false
+        notes.forEach { note ->
+            if (noteId == note.id && note.deleted) note.deleted = false
         }
         throw NoteNotFoundException("Заметка не найдена")
     }

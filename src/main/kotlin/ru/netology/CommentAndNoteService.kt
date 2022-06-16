@@ -1,6 +1,6 @@
 package ru.netology
 
-interface CommentAndNoteService <E>{
+interface CommentAndNoteService<E> {
 
     fun add(Any: E): E
 
